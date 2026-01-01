@@ -16,6 +16,8 @@ eureka:
 
 management:
   tracing:
-    export:
-      zipkin:
-        base-url: http://zipkin-svc:9411
+    sampling:
+      probability: 1.0  # Set to 1.0 for testing (100% sampling); lower (e.g., 0.1) in production
+  zipkin:
+    tracing:
+      endpoint: http://zipkin-svc:9411/api/v2/spans  # Full endpoint URL (critical!)
